@@ -1,0 +1,30 @@
+\begin{logicproof}{5}
+% For use with https://www.ctan.org/pkg/logicproof
+% Note that ending a box in a box is not valid and will not give the desired results.
+\forall x\forall y((R(x, y) \to  \forall z((R(x, z) \to  R(y, z)) \land  (R(y, z) \to  R(x, z)))) \land  (\forall z((R(x, z) \to  R(y, z)) \land  (R(y, z) \to  R(x, z))) \to  R(x, y))) & premise \\
+\begin{subproof}
+a & fresh \\
+\begin{subproof}
+b & fresh \\
+\begin{subproof}
+c & fresh \\
+\begin{subproof}
+R(a, b) \land  R(b, c) & assumption \\
+R(a, b) & $\land \mathrm{e}_{1}$, 5 \\
+R(b, c) & $\land \mathrm{e}_{2}$, 5 \\
+\forall y((R(a, y) \to  \forall z((R(a, z) \to  R(y, z)) \land  (R(y, z) \to  R(a, z)))) \land  (\forall z((R(a, z) \to  R(y, z)) \land  (R(y, z) \to  R(a, z))) \to  R(a, y))) & $\forall \mathrm{e}$, 1 \\
+(R(a, b) \to  \forall z((R(a, z) \to  R(b, z)) \land  (R(b, z) \to  R(a, z)))) \land  (\forall z((R(a, z) \to  R(b, z)) \land  (R(b, z) \to  R(a, z))) \to  R(a, b)) & $\forall \mathrm{e}$, 8 \\
+R(a, b) \to  \forall z((R(a, z) \to  R(b, z)) \land  (R(b, z) \to  R(a, z))) & $\land \mathrm{e}_{1}$, 9 \\
+\forall z((R(a, z) \to  R(b, z)) \land  (R(b, z) \to  R(a, z))) & $\to \mathrm{e}$, 6, 10 \\
+(R(a, c) \to  R(b, c)) \land  (R(b, c) \to  R(a, c)) & $\forall \mathrm{e}$, 11 \\
+R(b, c) \to  R(a, c) & $\land \mathrm{e}_{2}$, 12 \\
+R(a, c) & $\to \mathrm{e}$, 7, 13 
+\end{subproof}
+R(a, b) \land  R(b, c) \to  R(a, c) & $\to \mathrm{i}$, 5--14 
+\end{subproof}
+\forall w(R(a, b) \land  R(b, w) \to  R(a, w)) & $\forall \mathrm{i}$, 4--15 
+\end{subproof}
+\forall v\forall w(R(a, v) \land  R(v, w) \to  R(a, w)) & $\forall \mathrm{i}$, 3--16 
+\end{subproof}
+\forall u\forall v\forall w(R(u, v) \land  R(v, w) \to  R(u, w)) & $\forall \mathrm{i}$, 2--17 
+\end{logicproof}

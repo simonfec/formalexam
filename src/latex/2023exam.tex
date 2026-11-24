@@ -1,0 +1,22 @@
+\begin{logicproof}{4}
+% For use with https://www.ctan.org/pkg/logicproof
+% Note that ending a box in a box is not valid and will not give the desired results.
+\forall x\forall y((R(x, y) \to  \forall z((R(x, z) \to  R(y, z)) \land  (R(y, z) \to  R(x, z)))) \land  (\forall z((R(x, z) \to  R(y, z)) \land  (R(y, z) \to  R(x, z))) \to  R(x, y))) & premise \\
+\begin{subproof}
+w_{0} & fresh \\
+\forall y((R(w_{0}, y) \to  \forall z((R(w_{0}, z) \to  R(y, z)) \land  (R(y, z) \to  R(w_{0}, z)))) \land  (\forall z((R(w_{0}, z) \to  R(y, z)) \land  (R(y, z) \to  R(w_{0}, z))) \to  R(w_{0}, y))) & $\forall \mathrm{e}$, 1 \\
+(R(w_{0}, w_{0}) \to  \forall z((R(w_{0}, z) \to  R(w_{0}, z)) \land  (R(w_{0}, z) \to  R(w_{0}, z)))) \land  (\forall z((R(w_{0}, z) \to  R(w_{0}, z)) \land  (R(w_{0}, z) \to  R(w_{0}, z))) \to  R(w_{0}, w_{0})) & $\forall \mathrm{e}$, 3 \\
+\forall z((R(w_{0}, z) \to  R(w_{0}, z)) \land  (R(w_{0}, z) \to  R(w_{0}, z))) \to  R(w_{0}, w_{0}) & $\land \mathrm{e}_{2}$, 4 \\
+\begin{subproof}
+z_{0} & fresh \\
+\begin{subproof}
+R(w_{0}, z_{0}) & assumption 
+\end{subproof}
+R(w_{0}, z_{0}) \to  R(w_{0}, z_{0}) & $\to \mathrm{i}$, 7--7 \\
+(R(w_{0}, z_{0}) \to  R(w_{0}, z_{0})) \land  (R(w_{0}, z_{0}) \to  R(w_{0}, z_{0})) & $\land \mathrm{i}$, 8,8 
+\end{subproof}
+\forall z((R(w_{0}, z) \to  R(w_{0}, z)) \land  (R(w_{0}, z) \to  R(w_{0}, z))) & $\forall \mathrm{i}$, 6--9 \\
+R(w_{0}, w_{0}) & $\to \mathrm{e}$, 5, 10 
+\end{subproof}
+\forall wR(w, w) & $\forall \mathrm{i}$, 2--11 
+\end{logicproof}

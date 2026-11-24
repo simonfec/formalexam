@@ -1,0 +1,29 @@
+\begin{logicproof}{5}
+% For use with https://www.ctan.org/pkg/logicproof
+% Note that ending a box in a box is not valid and will not give the desired results.
+\forall x\neg L(x, x) & premise \\
+\forall x\forall y\forall z(L(x, y) \land  L(y, z) \to  L(x, z)) & premise \\
+\begin{subproof}
+x_{0} & fresh \\
+\neg L(x_{0}, x_{0}) & $\forall \mathrm{e}$, 1 \\
+\forall y\forall z(L(x_{0}, y) \land  L(y, z) \to  L(x_{0}, z)) & $\forall \mathrm{e}$, 2 \\
+\begin{subproof}
+y_{0} & fresh \\
+\forall z(L(x_{0}, y_{0}) \land  L(y_{0}, z) \to  L(x_{0}, z)) & $\forall \mathrm{e}$, 5 \\
+L(x_{0}, y_{0}) \land  L(y_{0}, x_{0}) \to  L(x_{0}, x_{0}) & $\forall \mathrm{e}$, 7 \\
+\begin{subproof}
+L(x_{0}, y_{0}) & assumption \\
+\begin{subproof}
+L(y_{0}, x_{0}) & assumption \\
+L(x_{0}, y_{0}) \land  L(y_{0}, x_{0}) & $\land \mathrm{i}$, 9,10 \\
+L(x_{0}, x_{0}) & $\to \mathrm{e}$, 8, 11 \\
+\bot  & $\neg \mathrm{e}$, 4, 12 
+\end{subproof}
+\neg L(y_{0}, x_{0}) & $\neg \mathrm{i}$, 10--13 
+\end{subproof}
+L(x_{0}, y_{0}) \to  \neg L(y_{0}, x_{0}) & $\to \mathrm{i}$, 9--14 
+\end{subproof}
+\forall y(L(x_{0}, y) \to  \neg L(y, x_{0})) & $\forall \mathrm{i}$, 6--15 
+\end{subproof}
+\forall x\forall y(L(x, y) \to  \neg L(y, x)) & $\forall \mathrm{i}$, 3--16 
+\end{logicproof}

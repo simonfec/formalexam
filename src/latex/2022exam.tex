@@ -1,0 +1,35 @@
+\begin{logicproof}{6}
+% For use with https://www.ctan.org/pkg/logicproof
+% Note that ending a box in a box is not valid and will not give the desired results.
+\neg \exists x\forall yS(x, y) & premise \\
+\begin{subproof}
+\neg \forall x\exists y\neg S(x, y) & assumption \\
+\begin{subproof}
+x_{0} & fresh \\
+\begin{subproof}
+\forall yS(x_{0}, y) & assumption \\
+\exists x\forall yS(x, y) & $\exists \mathrm{i}$, 4 \\
+\bot  & $\neg \mathrm{e}$, 1, 5 
+\end{subproof}
+\neg \forall yS(x_{0}, y) & $\neg \mathrm{i}$, 4--6 \\
+\begin{subproof}
+\neg \exists y\neg S(x_{0}, y) & assumption \\
+\begin{subproof}
+y_{0} & fresh \\
+\begin{subproof}
+\neg S(x_{0}, y_{0}) & assumption \\
+\exists y\neg S(x_{0}, y) & $\exists \mathrm{i}$, 10 \\
+\bot  & $\neg \mathrm{e}$, 8, 11 
+\end{subproof}
+S(x_{0}, y_{0}) & PBC, 10--12 
+\end{subproof}
+\forall yS(x_{0}, y) & $\forall \mathrm{i}$, 9--13 \\
+\bot  & $\neg \mathrm{e}$, 7, 14 
+\end{subproof}
+\exists y\neg S(x_{0}, y) & PBC, 8--15 
+\end{subproof}
+\forall x\exists y\neg S(x, y) & $\forall \mathrm{i}$, 3--16 \\
+\bot  & $\neg \mathrm{e}$, 2, 17 
+\end{subproof}
+\forall x\exists y\neg S(x, y) & PBC, 2--18 
+\end{logicproof}
